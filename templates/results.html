@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>File Carver | Results</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background: linear-gradient(135deg, #2a2a72, #009ffd);
+            color: #fff;
+            margin: 0;
+            padding: 2rem;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        a.download-btn {
+            display: inline-block;
+            margin-top: 0.5rem;
+            background: #009ffd;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        a.download-btn:hover {
+            background: #0077cc;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 2rem;
+            color: #fff;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Recovered Files</h1>
+
+    {% if files %}
+    <div class="grid">
+        {% for file in files %}
+        <div class="card">
+            <p>{{ file }}</p>
+            <a class="download-btn" href="{{ url_for('download', filename=file) }}">Download</a>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p style="text-align:center;">No files were recovered.</p>
+    {% endif %}
+
+    <a class="back-link" href="{{ url_for('index') }}">⬅ Back to Upload</a>
+</body>
+</html>

@@ -6,6 +6,29 @@ from signature_analysis import score_signature_match, cluster_fragments, fingerp
 from assembler import assemble_fragments, save_recovered
 from plugins.example_proprietary import match_proprietary_header
 
+from flask import Flask, render_template, request
+import os
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/upload', methods=['POST'])
+def upload():
+    file = request.files['file']
+    if file:
+        filepath = os.path.join('uploads', file.filename)
+        os.makedirs('uploads', exist_ok=True)
+        file.save(filepath)
+        # Тут ты можешь вызвать свой сканер
+        return f"File '{file.filename}' uploaded and scanned."
+    return "No file uploaded"
+
+if __name__ == '__main__':
+    app.run(debug=True)
+    
 def load_raw_fragment(image_path, offset, length=65536):
     with open(image_path, "rb") as f:
         f.seek(offset)
