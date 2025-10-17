@@ -1,0 +1,29 @@
+{
+    "formats": [
+      {
+        "name": "jpeg",
+        "extensions": [".jpg", ".jpeg"],
+        "header": "FFD8FF",
+        "footer": "FFD9",
+        "min_size": 1024,
+        "max_size": 10485760
+      },
+      {
+        "name": "png",
+        "extensions": [".png"],
+        "header": "89504E470D0A1A0A",
+        "footer": "49454E44AE426082",
+        "min_size": 512,
+        "max_size": 10485760
+      },
+      {
+        "name": "bmp",
+        "extensions": [".bmp"],
+        "header": "424D",
+        "footer": null,
+        "min_size": 512,
+        "max_size": 5242880
+      }
+    ]
+  }
+  
