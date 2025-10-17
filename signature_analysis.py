@@ -32,3 +32,12 @@ def score_signature_match(fragment, header, footer):
 
 def fingerprint_fragment(fragment):
     return sha256hex(fragment[:4096])
+
+
+def fuzzy_match(buffer, signature, threshold=0.8):
+    matches = 0
+    sig_bytes = bytes.fromhex(signature)
+    for i in range(len(sig_bytes)):
+        if buffer[i] == sig_bytes[i]:
+            matches += 1
+    return (matches / len(sig_bytes)) >= threshold

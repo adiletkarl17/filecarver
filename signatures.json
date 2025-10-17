@@ -23,6 +23,16 @@
         "footer": null,
         "min_size": 512,
         "max_size": 5242880
+      },
+      {
+        "name": "dng",
+        "header": "4949492A00",
+        "footer": "00000000"
+      },
+      {
+        "name": "dcm",
+        "header": "4449434D",
+        "footer": ""
       }
     ]
   }

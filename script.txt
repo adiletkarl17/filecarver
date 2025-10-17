@@ -1,0 +1,1 @@
+python main.py --image test_images\name.jpg --out recovered_files --block-size 1024
